@@ -253,7 +253,7 @@ public class Wrappers {
             logErrors("Failed while getting film details", e);
             return null;
         }
-
     }
+    
 
 }
