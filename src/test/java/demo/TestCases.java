@@ -30,18 +30,7 @@ public class TestCases {
     Wrappers wrappers;
     Locators locator;
 
-    /*
-     * testCase01:
-     * #Go to this website
-     * #click on "Hockey Teams: Forms, Searching and Pagination"
-     * #From the first 4 pages get the teams' details (Team Name, Year and win%) for
-     * teams with
-     * win* <40% (0.40) store it in ArrayList<HashMap<String, Object>>
-     * #Convert the ArrayList object to a JSON file named hockey-team-data.json.
-     * #Each Hashmap object should contain: Epoch Time of Scrape, Team Name, Year
-     * and Win %
-     * 
-     */
+    // Test
     @Test
     public void testCase01() {
         wrappers.logStatus("Start TestCase", "testCase01");
@@ -57,40 +46,23 @@ public class TestCases {
         wrappers.logStatus("End TestCase", "testCase01");
     }
 
-    /*
-     * testCase02:
-     * #Go to this website
-     * #click on "Oscar Winning Films"
-     * #Click on each year present on the screen and find the top 5 movies on the
-     * list - store in an ArrayList.
-     * #Keep a Boolean variable "isWinner" which will be true only for the best
-     * picture winner of that year.
-     * #Keep a variable to maintain the year from which the data is scraped
-     * #Convert the ArrayList object to a JSON file named oscar-winner-data.json.
-     * #Each Hashmap object should contain: Epoch Time of Scrape, Year, Title,
-     * Nomination, Awards and isWinner
-     * #Store the file in the output folder in the root directory.
-     * #Assert using TestNG that the file is present and not empty
-     * 
-     */
-
     @Test
     public void testCase02() {
         wrappers.logStatus("Start TestCase", "testCase02");
 
         wrappers.clickOnElement(Locators.OSCAR_PAGE_ELEMENT);
 
-        //To get the details of 1st 5 Oscar films from each years displayed
+        // To get the details of 1st 5 Oscar films from each years displayed
         List<HashMap<String, Object>> oscarFilmsDetails = wrappers.getOscarFilmsDetails();
 
         // Conver List<HashMap<String, Object>> into JSON FILE
         wrappers.covertToJson(oscarFilmsDetails, "oscar-winner-data");
 
-        //Assert whether the File oscar-winner-data.json exists and is not empty
+        // Assert whether the File oscar-winner-data.json exists and is not empty
         File jsonFile = new File("src/output/oscar-winner-data.json");
-        Assert.assertTrue(jsonFile.exists(),"The file does not exist");
-        Assert.assertFalse(jsonFile.length()==0,"The file is empty");
-        
+        Assert.assertTrue(jsonFile.exists(), "The file does not exist");
+        Assert.assertFalse(jsonFile.length() == 0, "The file is empty");
+
         wrappers.logStatus("End TestCase", "testCase02");
     }
 

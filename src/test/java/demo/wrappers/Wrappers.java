@@ -114,7 +114,7 @@ public class Wrappers {
                 clickOnElement(Locators.pageElement(i));
 
                 // Get the WebElements of teams whoes win < 40%
-                List<WebElement> winElements = getTeamElements();
+                List<WebElement> winElements = getWinElements();
                 for (WebElement ele : winElements) {
                     HashMap<String, Object> teamDetails = new HashMap<>();
 
@@ -135,8 +135,6 @@ public class Wrappers {
                     hockeyTeamDetails.add(teamDetails);
                 }
             }
-            System.out.println("hockeyTeamDetails size " + hockeyTeamDetails.size());
-            System.out.println("List of Hocky team :" + hockeyTeamDetails);
 
             return hockeyTeamDetails;
 
@@ -148,29 +146,25 @@ public class Wrappers {
     }
 
     // To get the WebElemets of team with Win<40%(0.40)
-    public List<WebElement> getTeamElements() {
+    public List<WebElement> getWinElements() {
         try {
             List<WebElement> winElements = new ArrayList<>();
 
             List<WebElement> allWinElements = wait
                     .until(ExpectedConditions.visibilityOfAllElementsLocatedBy(Locators.WIN_PERCENT_ELEMENT));
 
-            System.out.println("allWinElements size: " + allWinElements.size());
-
             for (WebElement ele : allWinElements) {
                 double winPercent = Double.parseDouble(ele.getText().trim());
-                System.out.println("winPercent text: " + winPercent);
 
                 if (winPercent < 0.40) {
                     winElements.add(ele);
                 }
             }
 
-            System.out.println("winElements size: " + winElements.size());
             return winElements;
 
         } catch (Exception e) {
-            logErrors("Failed to get Team elemets with win% < 0.40", e);
+            logErrors("Failed to get Team elements with win% < 0.40", e);
             return null;
         }
 
@@ -242,9 +236,6 @@ public class Wrappers {
                     String awards = titleElement.findElement(Locators.MOVIE_AWARDS_ELEMENT).getText();
                     String nomination = titleElement.findElement(Locators.MOVIE_NOMINATION_ELEMENT).getText();
 
-                    System.out.println("title " + title + " epoch " + epoch + " isWinner " + isWinner + " awards "
-                            + awards + " nomination " + nomination + " year " + year);
-
                     movieDetails.put("Epoch", epoch);
                     movieDetails.put("Year", year);
                     movieDetails.put("Title", title);
@@ -252,12 +243,10 @@ public class Wrappers {
                     movieDetails.put("Awards", awards);
                     movieDetails.put("isWinner", isWinner);
 
-                    System.out.println("movieDetails map: " + movieDetails);
-
                     filmsDetails.add(movieDetails);
                 }
             }
-            System.out.println("filmsDetails "+filmsDetails);
+
             return filmsDetails;
 
         } catch (Exception e) {
@@ -266,10 +255,5 @@ public class Wrappers {
         }
 
     }
-
-
-
-
-
 
 }
