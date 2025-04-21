@@ -1,35 +1,82 @@
-# WebScraper_Automation_Project
+# 🕸️ WebScraper_Automation_Project
 
+## 📘 Project Description
 
+**Web Scraper** is a UI automation project built using **Gradle**, designed to extract data from dynamic web tables and store it in structured JSON format.  
+The project focuses on two types of datasets:
 
-    /*
-     * testCase01:
-     * Step 1: Go to homepage and click on "Hockey Teams: Forms, Searching and Pagination"
-     * Step 2: From 1st 4 pages get the teams' details (Team Name, Year and win%)
-     * for teams with win<40% (0.40) store it in ArrayList<HashMap<String, Object>>
-     * Step 3: Convert the ArrayList object to a JSON file named hockey-team-data.json.
-     * 
-     * Requirements: Each Hashmap object should contain: Epoch Time of Scrape, Team Name, Year
-     * and Win %
-     * 
-     */
+1. **Hockey Teams** – Extracted from paginated, form-based tables.
+2. **Oscar Winning Films** – Fetched from a dynamic, AJAX-powered webpage.
 
+UI automation techniques are used to simulate real user interactions for data collection, and all scraped data is persisted as JSON files for further analysis or reference.
 
+---
 
+## 🔗 Important Links
 
-    /*
-     * testCase02:
-     * Step 1: Go to homepage and click on "Oscar Winning Films"
-     * Step 2: Click on each year present on the screen and find the top 5 movies on the
-     * list and store them in an ArrayList
-     * Step 3: Keep a Boolean variable "isWinner" which will be true only for the best
-     * picture winner of that year.
-     * Step 4: Keep a variable to maintain the year from which the data is scraped.
-     * Step 5: Convert the ArrayList object to a JSON file named oscar-winner-data.json.
-     * Step 6: Store the file in the output folder in the root directory.
-     * Step 7: Assert using TestNG that the file is present and not empty.
-     * 
-     * Requirements: Each Hashmap object should contain: Epoch Time of Scrape, Year, Title,
-     * Nomination, Awards and isWinner
-     * 
-     */
+- 🏒 Hockey Team Table: [https://www.scrapethissite.com/pages/forms/](https://www.scrapethissite.com/pages/forms/)  
+- 🎬 Oscar Winning Films: [https://www.scrapethissite.com/pages/ajax-javascript](https://www.scrapethissite.com/pages/ajax-javascript)
+
+---
+
+## 🧪 Test Cases
+
+### ✅ `testCase01` – Hockey Team Data Scraper
+
+**Steps:**
+
+1. Navigate to the homepage and click on **"Hockey Teams: Forms, Searching and Pagination"**.
+2. Iterate over the **first 4 pages** and fetch details for each team:  
+   - **Team Name**
+   - **Year**
+   - **Win %**
+3. For teams with **Win% < 40% (0.40)**:
+   - Store the data in `ArrayList<HashMap<String, Object>>`
+   - Each HashMap should include:
+     - Epoch Time of Scrape
+     - Team Name
+     - Year
+     - Win %
+4. Convert this list into a JSON file named **`hockey-team-data.json`**.
+
+---
+
+### ✅ `testCase02` – Oscar Winning Films Scraper
+
+**Steps:**
+
+1. Navigate to the homepage and click on **"Oscar Winning Films"**.
+2. Click on each year shown.
+3. For each year:
+   - Extract the **top 5 movies**
+   - Set a boolean **`isWinner`** to `true` only for the **Best Picture winner**.
+   - Maintain a variable to track the **year**.
+4. Store the movie data in `ArrayList<HashMap<String, Object>>` with fields:
+   - Epoch Time of Scrape
+   - Year
+   - Title
+   - Nomination
+   - Awards
+   - isWinner
+5. Convert this list into a JSON file named **`oscar-winner-data.json`**.
+6. Store this JSON file in the `output/` folder at the **project root**.
+7. Use **TestNG** to assert:
+   - JSON file is **present**
+   - JSON file is **not empty**
+
+---
+
+## 🧰 Technologies & Tools Used
+
+- **Java**
+- **Selenium WebDriver**
+- **TestNG**
+- **Gradle**
+- **JSON**
+- **Web Automation**
+- **XPath & CSS Selectors**
+
+---
+
+## 📂 Directory Structure
+
